@@ -17,7 +17,7 @@ class tick_stack::telegraf::install (
     }
   } elsif $osfamily == 'RedHat' {
     yumrepo { 'influx':
-      baseurl => 'https://repos.influxdata.com/rhel/\$releasever/\$basearch/stable',
+      baseurl => 'https://repos.influxdata.com/rhel/$releasever/$basearch/stable',
       descr => 'InfluxDB Repository - RHEL \$releasever',
       enabled => '1',
       gpgcheck => '1',
