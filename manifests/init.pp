@@ -1,7 +1,7 @@
 # == Class: tick
 #
-class tick {
-  include tick::base
-  include tick::telegraf::install
-  include tick::telegraf::config
+class tick_stack {
+  include tick_stack::base
+  include tick_stack::telegraf::install
+  include tick_stack::telegraf::config
 }
