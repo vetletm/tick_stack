@@ -1,4 +1,4 @@
-class config {
+class tick_stack::telegraf::config {
   $defaults_telegraf = {
     'ensure'         => present,
     'path'           => '/etc/telegraf/telegraf.conf',

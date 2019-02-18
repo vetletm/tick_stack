@@ -1,4 +1,4 @@
-class install {
+class tick_stack::telegraf::install {
   apt::source { 'influx':
     location => "https://repos.influxdata.com/${operatingsystem}",
     repos    => 'stable',
