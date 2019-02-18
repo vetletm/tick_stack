@@ -52,6 +52,20 @@
       "version_requirement": ">= 4.10.0 < 7.0.0"
     }
   ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">=5.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">=2.4.0 <6.0.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">=2.0.0"
+    }
+  ],
   "pdk-version": "1.9.0",
   "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
   "template-ref": "1.9.0-0-g7281db5"
