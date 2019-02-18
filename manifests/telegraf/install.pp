@@ -1,10 +1,10 @@
 class tick_stack::telegraf::install (
-  $operatingsystem  = downcase($::facts['os']['name']),
-  $oscodename       = downcase($::facts['os']['distro']['codename']),
-  $osfamily = $::facts['os']['family']
+  $osfamily         = $::facts['os']['family'],
   ){
 
   if $osfamily == 'Debian' {
+    $operatingsystem  = downcase($::facts['os']['name'])
+    $oscodename       = downcase($::facts['os']['distro']['codename'])
     apt::source { 'influx':
       location => "https://repos.influxdata.com/${operatingsystem}",
       repos    => 'stable',
