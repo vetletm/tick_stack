@@ -18,5 +18,7 @@ tick_stack::telegraf::defaults:
     inputs.cpu:
       percpu: true
       totalcpu: true
-    inputs.mem: ''
-    inputs.system: ''
+    inputs.mem:
+      '#comment': 'no config'
+    inputs.system:
+      '#comment': 'no config'
