@@ -1,5 +1,5 @@
 class tick_stack::telegraf::config(
-  $web = lookup(tick_stack::telegraf::web),
+  $defaults = lookup(tick_stack::telegraf::defaults),
   $defaults_telegraf = lookup(tick_stack::telegraf::defaults_telegraf)
   ){
   # $defaults_telegraf = {
@@ -29,5 +29,5 @@ class tick_stack::telegraf::config(
   #       'totalcpu'  => true,
   #     },
   # }
-   create_ini_settings($web,$defaults_telegraf)
+   create_ini_settings($defaults,$defaults_telegraf)
 }
