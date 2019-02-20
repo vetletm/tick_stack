@@ -9,13 +9,13 @@ class tick_stack::telegraf::config(
 
     create_ini_settings($defaults,$defaults_telegraf)
 
-    $influxdb_config => {
+    $influxdb_config = {
       'outputs.influxdb' => {
         'url' => "$influxdb_url",
         'database' => "$influxdb_database",
         'precision' => "$influxdb_precision",
       }
     }
-    
+
     create_ini_settings($influxdb_config,$defaults_telegraf)
 }
