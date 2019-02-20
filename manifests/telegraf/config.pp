@@ -1,14 +1,15 @@
 class tick_stack::telegraf::config(
-  $defaults = lookup(tick_stack::telegraf::settings)
+  $web = lookup(tick_stack::telegraf::settings),
+  $defaults_telegraf = lookup(tick_stack::telegraf::defaults_telegraf)
   ){
-  $defaults_telegraf = {
-    'ensure'         => present,
-    'path'           => '/etc/telegraf/telegraf.conf',
-    'section_prefix' => '[',
-    'section_suffix' => ']',
-    'indent_char'    => ' ',
-    'indent_width'   => 2,
-  }
+  # $defaults_telegraf = {
+  #   'ensure'         => present,
+  #   'path'           => '/etc/telegraf/telegraf.conf',
+  #   'section_prefix' => '[',
+  #   'section_suffix' => ']',
+  #   'indent_char'    => ' ',
+  #   'indent_width'   => 2,
+  # }
 
   # $userpw_telegraf = {
   #     'global_tags' => {
@@ -28,5 +29,5 @@ class tick_stack::telegraf::config(
   #       'totalcpu'  => true,
   #     },
   # }
-   create_ini_settings($defaults,$defaults_telegraf)
+   create_ini_settings($web,$defaults_telegraf)
 }
