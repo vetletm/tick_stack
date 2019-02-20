@@ -1,11 +1,11 @@
 ---
 tick_stack::telegraf::defaults_telegraf:
-    ensure:          present
-    path:            '/etc/telegraf/telegraf.conf'
-    section_prefix:  '['
-    section_suffix:  ']'
-    indent_char:     ' '
-    indent_width:    2
+    ensure: 'present'
+    path: '/etc/telegraf/telegraf.conf'
+    section_prefix: '['
+    section_suffix: ']'
+    indent_char: ' '
+    indent_width: 2
 tick_stack::telegraf::web:
     global_tags:
       dc: "\"branch1\""
