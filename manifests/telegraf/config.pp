@@ -9,31 +9,13 @@ class tick_stack::telegraf::config(
 
     create_ini_settings($defaults,$defaults_telegraf)
 
-    ini_setting { 'influxdb':
-      ensure  => present,
-      path => $config_path,
-      section => 'outputs.influxdb',
-      setting => 'url',
-      value   => $influxdb_url,
-      section_prefix => '[',
-      section_suffix => ']',
+    $influxdb_config => {
+      'outputs.influxdb' => {
+        'url' => "$influxdb_url",
+        'database' => "$influxdb_database",
+        'precision' => "$influxdb_precision",
+      }
     }
-    ini_setting { 'influxdb':
-      ensure  => present,
-      path => $config_path,
-      section => 'outputs.influxdb',
-      setting => 'database',
-      value   => $influxdb_database,
-      section_prefix => '[',
-      section_suffix => ']',
-    }
-    ini_setting { 'influxdb':
-      ensure  => present,
-      path => $config_path,
-      section => 'outputs.influxdb',
-      setting => 'precision',
-      value   => $influxdb_precision,
-      section_prefix => '[',
-      section_suffix => ']',
-    }
+    
+    create_ini_settings($influxdb_config,$defaults_telegraf)
 }
