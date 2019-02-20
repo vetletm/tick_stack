@@ -1,5 +1,5 @@
 class tick_stack::telegraf::config(
-  $web = lookup(tick_stack::telegraf::settings),
+  $web = lookup(tick_stack::telegraf::web),
   $defaults_telegraf = lookup(tick_stack::telegraf::defaults_telegraf)
   ){
   # $defaults_telegraf = {
