@@ -13,24 +13,24 @@ class tick_stack::telegraf::install (
         'id'     => '05CE15085FC09D18E99EFB22684A14CF2582E0C5',
         'source' => 'https://repos.influxdata.com/influxdb.key',
       },
-      before => Package['telegraf'],
+      before   => Package['telegraf'],
     }
   } elsif $osfamily == 'RedHat' {
     yumrepo { 'influx':
-      baseurl => 'https://repos.influxdata.com/rhel/$releasever/$basearch/stable',
-      descr => 'InfluxDB Repository - RHEL \$releasever',
-      enabled => '1',
+      baseurl  => 'https://repos.influxdata.com/rhel/$releasever/$basearch/stable',
+      descr    => 'InfluxDB Repository - RHEL \$releasever',
+      enabled  => '1',
       gpgcheck => '1',
-      gpgkey => 'https://repos.influxdata.com/influxdb.key',
-      before => Package['telegraf'],
+      gpgkey   => 'https://repos.influxdata.com/influxdb.key',
+      before   => Package['telegraf'],
     }
   }
 
 
   package { 'telegraf':
-    ensure  => latest,
+    ensure => latest,
     # require => Apt::Source['influx'],
-    notify  => Service['telegraf'],
+    notify => Service['telegraf'],
   }
 
   service { 'telegraf':
