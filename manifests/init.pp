@@ -8,6 +8,7 @@ class tick_stack (
   String $include_influxdb,
 
   ){
+  contain tick_stack::base
   contain tick_stack::influxdb
   contain tick_stack::telegraf
 
