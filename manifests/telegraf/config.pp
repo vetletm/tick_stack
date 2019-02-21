@@ -7,7 +7,7 @@ class tick_stack::telegraf::config(
     $influxdb_precision = lookup(tick_stack::telegraf::influxdb_precision)
     ){
 
-    create_ini_settings($defaults,$defaults_telegraf)
+    create_ini_settings($defaults_telegraf,$defaults)
 
     $influxdb_config = {
       'outputs.influxdb' => {
@@ -17,5 +17,5 @@ class tick_stack::telegraf::config(
       }
     }
 
-    create_ini_settings($influxdb_config,$defaults_telegraf)
+    create_ini_settings($influxdb_config,$defaults)
 }
