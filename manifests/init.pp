@@ -12,11 +12,16 @@ class tick_stack (
   contain tick_stack::influxdb
   contain tick_stack::telegraf
 
-  Class['tick_stack::base'] ->
+  Class['tick_stack::base']
+
   if $include_influxdb == 'True' {
-    include tick_stack::influxdb
+    class {'tick_stack::influxdb':
+      require => Class['tick_stack::base']
+    }
   }
   if $include_telegraf == 'True' {
-    include tick_stack::telegraf
+    class {'tick_stack::telegraf':
+      require => Class['tick_stack::base']
+    }
   }
 }
