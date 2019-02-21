@@ -1,7 +1,6 @@
 class tick_stack::telegraf::config(
     $section_defaults = lookup(tick_stack::telegraf::section_defaults),
-    $defaults_telegraf = lookup(tick_stack::telegraf::defaults_telegraf),
-    $config_path = lookup(tick_stack::telegraf::config_path),
+    $defaults = lookup(tick_stack::telegraf::defaults),
     ){
 
     create_ini_settings($defaults_telegraf,$section_defaults)
