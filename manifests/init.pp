@@ -13,5 +13,6 @@ class tick_stack {
   }
 
   class { 'tick_stack::influxdb':
+    require => Class['tick_stack::base']
   }
 }
