@@ -12,7 +12,7 @@ class tick_stack (
   contain tick_stack::influxdb
   contain tick_stack::telegraf
 
-  Class['tick_stack::base']
+  include tick_stack::base
 
   if $include_influxdb == 'True' {
     class {'tick_stack::influxdb':
