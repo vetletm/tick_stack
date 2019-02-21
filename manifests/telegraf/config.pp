@@ -8,9 +8,9 @@ class tick_stack::telegraf::config(
 
     $influxdb_config = {
       'outputs.influxdb' => {
-        'url' => "$tick_stack::influxdb_url",
-        'database' => "$tick_stack::influxdb_database",
-        'precision' => "$tick_stack::influxdb_precision",
+        'url' => "$tick_stack::telegraf::influxdb_url",
+        'database' => "$tick_stack::telegraf::influxdb_database",
+        'precision' => "$tick_stack::telegraf::influxdb_precision",
       }
     }
 
