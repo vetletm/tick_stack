@@ -52,6 +52,7 @@ class tick_stack::influxdb::config {
   service { 'influxdb':
    ensure  => running,
    enable  => true,
-   restart => true,
+   restarted => true,
+   require => Package['influxdb'],
   }
 }

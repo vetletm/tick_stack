@@ -5,10 +5,4 @@ class tick_stack::influxdb::install {
     ensure => latest,
     notify => Service['influxdb'],
   }
-
-  service { 'influxdb':
-   ensure  => running,
-   enable  => true,
-   require => Package['influxdb'],
-  }
 }
