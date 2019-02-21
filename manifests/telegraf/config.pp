@@ -3,7 +3,7 @@ class tick_stack::telegraf::config(
     $defaults = lookup(tick_stack::telegraf::defaults),
     ){
 
-    create_ini_settings($defaults_telegraf,$section_defaults)
+    create_ini_settings($defaults,$section_defaults)
 
     $influxdb_config = {
       'outputs.influxdb' => {
