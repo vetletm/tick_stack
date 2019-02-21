@@ -12,5 +12,7 @@ class tick_stack {
   class { 'tick_stack::telegraf::config':
   }
 
-  include tick_stack::influxdb
+  class { 'tick_stack::influxdb':
+    require => Class['tick_stack::base']
+  }
 }
