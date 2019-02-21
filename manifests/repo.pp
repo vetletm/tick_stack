@@ -1,6 +1,6 @@
-# == Class: tick_stack::base
+# == Class: tick_stack::repo
 #
-class tick_stack::base (
+class tick_stack::repo (
   $osfamily         = $::facts['os']['family'],
   ){
 
