@@ -1,18 +1,21 @@
 # == Class: tick
 #
-class tick_stack {
-  class { 'tick_stack::base':
-    before => Class['tick_stack::telegraf::install', 'tick_stack::influxdb']
-  }
+class tick_stack (
+  String $influxdb_url,
+  String $influxdb_database,
+  String $influxdb_precision,
 
-  class { 'tick_stack::telegraf::install':
-    before => Class['tick_stack::telegraf::config']
-  }
+  Bool $include_telegraf,
+  Bool $include_influxdb,
+  ){
+  contain tick_stack::influxdb
+  contain tick_stack::telegraf
 
-  class { 'tick_stack::telegraf::config':
+  Class['tick_stack::base'] ->
+  if $include_influxdb {
+    include tick_stack::influxdb
   }
-
-  class { 'tick_stack::influxdb':
-    require => Class['tick_stack::base']
+  if $include_telegraf {
+    include tick_stack::telegraf
   }
 }
