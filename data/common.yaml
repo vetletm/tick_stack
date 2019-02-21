@@ -1,5 +1,5 @@
 ---
-tick_stack::telegraf::defaults_telegraf:
+tick_stack::telegraf::section_defaults:
     ensure: 'present'
     path: '/etc/telegraf/telegraf.conf'
     section_prefix: '['

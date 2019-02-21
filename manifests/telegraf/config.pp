@@ -1,5 +1,5 @@
 class tick_stack::telegraf::config(
-    $defaults = lookup(tick_stack::telegraf::defaults),
+    $defaults = lookup(tick_stack::telegraf::section_defaults),
     $defaults_telegraf = lookup(tick_stack::telegraf::defaults_telegraf),
     $config_path = lookup(tick_stack::telegraf::config_path),
     $influxdb_url = lookup(tick_stack::telegraf::influxdb_url),
