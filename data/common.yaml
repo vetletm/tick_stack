@@ -19,8 +19,3 @@ tick_stack::telegraf::defaults:
       '#comment': 'no config'
     inputs.system:
       '#comment': 'no config'
-
-tick_stack::telegraf::influxdb_url: "\"http://127.0.0.1:8086\""
-tick_stack::telegraf::influxdb_database: "\"telegraf\""
-tick_stack::telegraf::influxdb_precision: "\"s\""
-tick_stack::telegraf::config_path: '/etc/telegraf/telegraf.conf'
