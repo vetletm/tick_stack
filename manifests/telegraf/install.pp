@@ -1,3 +1,5 @@
+# == Class: tick_stack::telegraf::install
+#
 class tick_stack::telegraf::install {
 
   package { 'telegraf':
@@ -6,10 +8,10 @@ class tick_stack::telegraf::install {
   }
 
   service { 'telegraf':
-   ensure  => running,
-   enable  => true,
-   require => Package['telegraf'],
-   notify  => File['telegraf_conf'],
+    ensure  => running,
+    enable  => true,
+    require => Package['telegraf'],
+    notify  => File['telegraf_conf'],
   }
 
   # After installation, telegraf will add a fully commented config file, this removes it so we can add our own

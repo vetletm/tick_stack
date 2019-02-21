@@ -1,3 +1,5 @@
+# == Class: tick_stack::telegraf::config
+#
 class tick_stack::telegraf::config(
     $section_defaults = lookup(tick_stack::telegraf::section_defaults),
     $defaults = lookup(tick_stack::telegraf::defaults),
@@ -7,9 +9,9 @@ class tick_stack::telegraf::config(
 
     $influxdb_config = {
       'outputs.influxdb' => {
-        'url' => "$tick_stack::telegraf::influxdb_url",
-        'database' => "$tick_stack::telegraf::influxdb_database",
-        'precision' => "$tick_stack::telegraf::influxdb_precision",
+        'url' => $tick_stack::telegraf::influxdb_url,
+        'database' => $tick_stack::telegraf::influxdb_database,
+        'precision' => $tick_stack::telegraf::influxdb_precision,
       }
     }
 

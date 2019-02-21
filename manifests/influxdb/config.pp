@@ -50,9 +50,9 @@ class tick_stack::influxdb::config {
   create_ini_settings($all_defaults_influxdb, $defaults_influxdb)
 
   service { 'influxdb':
-   ensure  => running,
-   enable  => true,
-   restart => true,
-   require => Package['influxdb'],
+    ensure  => running,
+    enable  => true,
+    restart => true,
+    require => Package['influxdb'],
   }
 }

@@ -7,7 +7,7 @@ class tick_stack::telegraf(
   ){
   class {'tick_stack::telegraf::install':
     require => Class['tick_stack::repo']
-  } ->
-  class {'tick_stack::telegraf::config':
+  }
+  -> class {'tick_stack::telegraf::config':
   }
 }
