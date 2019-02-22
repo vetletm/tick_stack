@@ -1,13 +1,10 @@
 {
-  "name": "thinker-tick_stack",
+  "name": "tick_stack",
   "version": "0.1.0",
   "author": "vetletm",
   "summary": "",
   "license": "MIT",
   "source": "",
-  "dependencies": [
-
-  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "CentOS",
