@@ -6,9 +6,12 @@ class tick_stack::telegraf(
   String $influxdb_precision,
   ){
   include tick_stack::repo
+
   class {'tick_stack::telegraf::install':
     require => Class['tick_stack::repo']
   }
   -> class {'tick_stack::telegraf::config':
+  }
+  ~> class {'tick_stack::telegraf::service':
   }
 }
