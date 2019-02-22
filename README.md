@@ -12,7 +12,6 @@ Puppet code for deploying the entire TICK stack as a single module, written as p
 in site.pp
 ```puppet
 node default {
-  include tick_stack::repo
   include tick_stack::influxdb
 
   class { 'tick_stack::telegraf':
