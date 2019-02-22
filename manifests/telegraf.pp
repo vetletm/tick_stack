@@ -4,6 +4,8 @@ class tick_stack::telegraf(
   String $influxdb_url,
   String $influxdb_database,
   String $influxdb_precision,
+  String $influxdb_username,
+  String $influxdb_password,
   ){
   include tick_stack::repo
 
