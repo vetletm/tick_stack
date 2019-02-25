@@ -4,8 +4,6 @@ class tick_stack::influxdb::config {
   # InfluxDB
   $defaults_influxdb = {
     'ensure'          => present,
-    'require'         => Package['influxdb'],
-    'notify'          => Service['influxdb'],
     'path'            => '/etc/influxdb/influxdb.conf',
     'indent_char'     => ' ',
     'indent_width'    => 2,
@@ -48,11 +46,4 @@ class tick_stack::influxdb::config {
     }
   }
   create_ini_settings($all_defaults_influxdb, $defaults_influxdb)
-
-  service { 'influxdb':
-    ensure  => running,
-    enable  => true,
-    restart => true,
-    require => Package['influxdb'],
-  }
 }

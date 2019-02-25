@@ -7,4 +7,6 @@ class tick_stack::influxdb {
   }
   -> class {'tick_stack::influxdb::config':
   }
+  ~> class {'tick_stack::influxdb::service':
+  }
 }
