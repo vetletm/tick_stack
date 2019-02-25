@@ -1,15 +1,15 @@
 # == Class: tick_stack::influxdb::config
 #
 class tick_stack::influxdb::config (
-  $path = $tick_stack::influxdb::params::path,
+  $path         = $tick_stack::influxdb::params::path,
   $bind_address = $tick_stack::influxdb::params::bind_address,
 
-  $data_dir = $tick_stack::influxdb::params::data_dir,
-  $wal_dir = $tick_stack::influxdb::params::wal_dir,
-  $meta_dir = $tick_stack::influxdb::params::meta_dir,
+  $data_dir     = $tick_stack::influxdb::params::data_dir,
+  $wal_dir      = $tick_stack::influxdb::params::wal_dir,
+  $meta_dir     = $tick_stack::influxdb::params::meta_dir,
 
-  $http_enable = $tick_stack::influxdb::params::http_enable,
-  $http_bind = $tick_stack::influxdb::params::http_bind,
+  $http_enable  = $tick_stack::influxdb::params::http_enable,
+  $http_bind    = $tick_stack::influxdb::params::http_bind,
 
   ) inherits tick_stack::influxdb::params  {
   # InfluxDB
