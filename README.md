@@ -9,16 +9,21 @@ Puppet code for deploying the entire TICK stack as a single module, written as p
   - Puppet/yum, version > 3.0.0
 
 ## Example
-in site.pp
+To install telegraf and influxdb on one host with default settings: 
 ```puppet
 node default {
   include tick_stack::influxdb
-
-  class { 'tick_stack::telegraf':
-    influxdb_url        => '"http://127.0.0.1:8086"',
-    influxdb_database   => '"telegraf"',
-    influxdb_precision  => '"s"',
-  }
+  include tick_stack::telegraf
 }
 
+```
+
+To install telegraf to use an external InfluxDB host:
+```puppet
+node default {
+  class { 'tick_stack::telegraf':
+    url         => '"http://10.10.0.1:8086"',
+    database    => '"telegraf"',
+    precision   => '"s"',
+}
 ```
