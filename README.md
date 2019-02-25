@@ -9,7 +9,7 @@ Puppet code for deploying the entire TICK stack as a single module, written as p
   - Puppet/yum, version > 3.0.0
 
 ## Example
-To install telegraf and influxdb on one host with default settings: 
+To install Telegraf and InfluxDB on one host with default settings: 
 ```puppet
 node default {
   include tick_stack::influxdb
@@ -18,7 +18,7 @@ node default {
 
 ```
 
-To install telegraf to use an external InfluxDB host:
+To install Telegraf to use an external InfluxDB host:
 ```puppet
 node default {
   class { 'tick_stack::telegraf':
@@ -27,3 +27,18 @@ node default {
     precision   => '"s"',
 }
 ```
+
+To remove Telegraf and InfluxDB
+```puppet
+node default {
+  class { 'tick_stack::telegraf':
+    ensure => absent,
+    service => stopped,
+  }
+  class { 'tick_stack::influxdb':
+    ensure => absent,
+    service => stopped,
+  }
+}
+```
+**note**: This won't remove the config files or any other files created by the packages, this will only make sure the packages installed with your package manager are removed and that the systemd services are stopped.
