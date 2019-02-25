@@ -3,17 +3,24 @@
 class tick_stack::telegraf::config(
   $section_defaults = lookup(tick_stack::telegraf::section_defaults),
   $defaults         = lookup(tick_stack::telegraf::defaults),
-  ){
+
+  $url              = $tick_stack::telegraf::params::url,
+  $database         = $tick_stack::telegraf::params::database,
+  $precision        = $tick_stack::telegraf::params::precision,
+  $username         = $tick_stack::telegraf::params::username,
+  $password         = $tick_stack::telegraf::params::password,
+
+  ) inherits tick_stack::telegraf::params {
 
   create_ini_settings($defaults,$section_defaults)
 
   $influxdb_config = {
     'outputs.influxdb' => {
-      'url'       => $tick_stack::telegraf::influxdb_url,
-      'database'  => $tick_stack::telegraf::influxdb_database,
-      'precision' => $tick_stack::telegraf::influxdb_precision,
-      'username'  => $tick_stack::telegraf::influxdb_username,
-      'password'  => $tick_stack::telegraf::influxdb_password,
+      'url'       => $url,
+      'database'  => $database,
+      'precision' => $precision,
+      'username'  => $username,
+      'password'  => $password,
     }
   }
 
