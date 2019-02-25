@@ -1,22 +1,33 @@
 # == Class: tick_stack::influxdb::config
 #
-class tick_stack::influxdb::config {
+class tick_stack::influxdb::config (
+  $path = $tick_stack::influxdb::params::path,
+  $bind_address = $tick_stack::influxdb::params::bind_address,
+
+  $data_dir = $tick_stack::influxdb::params::data_dir,
+  $wal_dir = $tick_stack::influxdb::params::wal_dir,
+  $meta_dir = $tick_stack::influxdb::params::meta_dir,
+
+  $http_enable = $tick_stack::influxdb::params::http_enable,
+  $http_bind = $tick_stack::influxdb::params::http_bind,
+
+  ) inherits tick_stack::influxdb::params  {
   # InfluxDB
   $defaults_influxdb = {
     'ensure'          => present,
-    'path'            => '/etc/influxdb/influxdb.conf',
+    'path'            => $path,
     'indent_char'     => ' ',
     'indent_width'    => 2,
   }
 
   $all_defaults_influxdb = {
     '' => {
-      'bind-address' => "\"0.0.0.0:8088\"",
+      'bind-address' => $bind_address,
     },
     'data' => {
-      'dir'                                 => "\"/var/lib/influxdb/data\"",
+      'dir'                                 => $data_dir,
       'index-version'                       => '"inmem"',
-      'wal-dir'                             => "\"/var/lib/influxdb/wal\"",
+      'wal-dir'                             => $wal_dir,
       'wal-fsync-delay'                     => '"0s"',
       'validate-keys'                       => false,
       'query-log-enabled'                   => true,
@@ -36,13 +47,13 @@ class tick_stack::influxdb::config {
 
     },
     'meta' => {
-      'dir'                   => "\"/var/lib/influxdb/meta\"",
+      'dir'                   => $meta_dir,
       'retention-autocreate'  => true,
       'logging-enabled'       => true,
     },
     'http' => {
-      'enabled'       => true,
-      'bind-address'  => "\":8086\"",
+      'enabled'       => $http_enable,
+      'bind-address'  => $http_bind,
     }
   }
   create_ini_settings($all_defaults_influxdb, $defaults_influxdb)
