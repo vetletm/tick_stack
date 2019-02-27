@@ -1,9 +1,6 @@
 # == Class: tick_stack::telegraf::config
 #
 class tick_stack::telegraf::config(
-  # $section_defaults = lookup(tick_stack::telegraf::section_defaults),
-  # $defaults         = lookup(tick_stack::telegraf::defaults),
-
   $url          = $tick_stack::telegraf::params::url,
   $database     = $tick_stack::telegraf::params::database,
   $precision    = $tick_stack::telegraf::params::precision,
