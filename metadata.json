@@ -65,6 +65,10 @@
     {
       "name": "puppetlabs/inifile",
       "version_requirement": ">=2.0.0"
+    },
+    {
+      "name": "puppet/wget",
+      "version_requirement": ">=2.0.0"
     }
   ],
   "pdk-version": "1.9.0",
