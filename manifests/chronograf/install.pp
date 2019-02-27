@@ -11,7 +11,6 @@ class tick_stack::chronograf::install (
   file { $src_dir:
     ensure => directory,
   }
-
   -> wget::fetch { 'Fetch chrono package':
     source      => $pkg_url,
     destination => $src_dir
