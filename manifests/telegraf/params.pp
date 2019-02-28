@@ -1,16 +1,29 @@
 # == Class: tick_stack::telegraf::params
 #
 class tick_stack::telegraf::params {
-  $username     = '"telegraf"'
-  $password     = '"telegraf"'
-  $url          = '"http://127.0.0.1:8086"'
-  $database     = '"telegraf"'
-  $precision    = '"s"'
   $ensure       = 'present'
   $service      = 'running'
   $conf_path    = '/etc/telegraf/telegraf.conf'
-  $service_type = '"test"'
-  $region       = '"test"'
-  $environment  = '"test"'
-  $interval     = '"10s"'
+
+  $global_tags = {
+    'dc' => 'home',
+  }
+  $agent       = {
+    'interval' => '10s',
+  }
+
+  $outputs     = {
+    'outputs.influxdb' => {
+      'urls'      => [ 'http://localhost:8086' ],
+      'database'  => '"telegraf"',
+      'precision' => '"s"',
+      },
+  }
+  $inputs      = {
+    'inputs.cpu' => {
+      'percpu'   => true,
+      'totalcpu' => true,
+    },
+    'inputs.sys' => {}
+  }
 }

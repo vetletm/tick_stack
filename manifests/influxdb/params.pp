@@ -9,7 +9,7 @@ class tick_stack::influxdb::params {
 
   $http_enable    = true
   $http_bind      = '":8086"'
-  $http_auth      = true
+  $http_auth      = false
 
 
   $ensure         = 'present'
