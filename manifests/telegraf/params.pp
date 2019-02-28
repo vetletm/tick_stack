@@ -24,6 +24,6 @@ class tick_stack::telegraf::params {
       'percpu'   => true,
       'totalcpu' => true,
     },
-    'inputs.sys' => {}
+    'inputs.system' => {}
   }
 }
