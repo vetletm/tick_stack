@@ -1,0 +1,12 @@
+HOST=<%= @host %>
+PORT=<%= @port %>
+INFLUXDB_URL=<%= @influxdb_url %>
+<% if @influxdb_username %>INFLUXDB_USERNAME=<%= @influxdb_username %> <% end %>
+<% if @influxdb_password %>INFLUXDB_PASSWORD=<%= @influxdb_password %> <% end %>
+<% if @kapacitor_url %>KAPACITOR_URL=<%= @kapacitor_url %> <% end %>
+<% if @kapacitor_username %>KAPACITOR_USERNAME=<%= @kapacitor_username %> <% end %>
+<% if @kapacitor_password %>KAPACITOR_PASSWORD=<%= @kapacitor_password %> <% end %>
+<% if @cert %>
+TLS_CERTIFICATE=<%= @cert %>
+TLS_PRIVATE_KEY=<%= @key %>
+<% end %>
