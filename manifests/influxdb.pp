@@ -10,6 +10,7 @@ class tick_stack::influxdb (
 
   $http_enable  = $tick_stack::influxdb::params::http_enable,
   $http_bind    = $tick_stack::influxdb::params::http_bind,
+  $http_auth    = $tick_stack::influxdb::params::http_auth,
 
   $ensure       = $tick_stack::influxdb::params::ensure,
 
@@ -30,6 +31,7 @@ class tick_stack::influxdb (
 
     http_enable  => $http_enable,
     http_bind    => $http_bind,
+    http_auth    => $http_auth,
   }
   ~> class {'tick_stack::influxdb::service':
     service => $service,

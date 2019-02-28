@@ -10,6 +10,7 @@ class tick_stack::influxdb::config (
 
   $http_enable  = $tick_stack::influxdb::params::http_enable,
   $http_bind    = $tick_stack::influxdb::params::http_bind,
+  $http_auth    = $tick_stack::influxdb::params::http_auth,
 
   ) inherits tick_stack::influxdb::params  {
   # InfluxDB
@@ -54,6 +55,7 @@ class tick_stack::influxdb::config (
     'http' => {
       'enabled'       => $http_enable,
       'bind-address'  => $http_bind,
+      'auth-enabled'  => $http_auth,
     }
   }
   create_ini_settings($all_defaults_influxdb, $defaults_influxdb)
