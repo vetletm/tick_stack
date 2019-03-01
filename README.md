@@ -6,7 +6,6 @@ Puppet code for deploying the entire TICK stack as a single module, written as p
   - Puppetlabs/inifile, version > 2.0.0
   - Puppetlabs/apt, version > 5.0.0
   - Puppetlabs/stdlib, version > 2.4.0
-  - Puppet/yum, version > 3.0.0
 
 ## Example
 Install Telegraf and InfluxDB on one host with default settings:

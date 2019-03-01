@@ -1,5 +1,5 @@
 {
-  "name": "tick_stack",
+  "name": "vetletm-tick_stack",
   "version": "0.1.0",
   "author": "vetletm",
   "summary": "",
@@ -55,19 +55,11 @@
       "version_requirement": ">=5.0.0"
     },
     {
-      "name": "puppet/yum",
-      "version_requirement": ">=3.0.0"
-    },
-    {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">=2.4.0 <6.0.0"
     },
     {
       "name": "puppetlabs/inifile",
-      "version_requirement": ">=2.0.0"
-    },
-    {
-      "name": "puppet/wget",
       "version_requirement": ">=2.0.0"
     }
   ],
