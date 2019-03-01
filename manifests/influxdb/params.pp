@@ -1,21 +1,11 @@
 # == Class: tick_stack::influxdb::params
 #
 class tick_stack::influxdb::params {
-  $path           = '/etc/influxdb/influxdb.conf'
-
-  $http_enable    = true
-  $http_bind      = '":8086"'
-  $http_auth      = false
-
+  # Install options
   $ensure         = 'present'
 
-  # Service options
-  $service            = 'running'
-  $enable             = true
-  $hasrestart         = true
-  $hasstatus          = true
-
-  # Global settings
+  # Config options
+  $path           = '/etc/influxdb/influxdb.conf'
   $global = {
     'bind-address'  => '"127.0.0.1:8088"'
   }
@@ -55,4 +45,11 @@ class tick_stack::influxdb::params {
   $logging          = undef
   $subscriber       = undef
   $tls              = undef
+
+  # Service options
+  $service            = 'running'
+  $enable             = true
+  $hasrestart         = true
+  $hasstatus          = true
+
 }
