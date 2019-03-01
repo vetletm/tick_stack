@@ -1,0 +1,73 @@
+# Influxdb Configuration
+#
+# THIS FILE IS MANAGED BY PUPPET
+#
+# Global settings
+<% if @global -%>
+[global]
+<%   @global.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @meta -%>
+# Metastore settings
+[meta]
+<%   @meta.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @data -%>
+# Data settings
+[data]
+<%   @data.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @coordinator -%>
+[coordinator]
+<%   @coordinator.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @retention -%>
+[retention]
+<%   @retention.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @shardprecreation -%>
+[shard-precreation]
+<%   @shardprecreation.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @monitor -%>
+[monitor]
+<%   @monitor.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @http -%>
+[http]
+<%   @http.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @logging -%>
+[logging]
+<%   @logging.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @subscriber -%>
+[subscriber]
+<%   @subscriber.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+<% if @tls -%>
+[tls]
+<%   @tls.each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>

@@ -2,15 +2,6 @@
 #
 class tick_stack::influxdb (
   $path         = $tick_stack::influxdb::params::path,
-  $bind_address = $tick_stack::influxdb::params::bind_address,
-
-  $data_dir     = $tick_stack::influxdb::params::data_dir,
-  $wal_dir      = $tick_stack::influxdb::params::wal_dir,
-  $meta_dir     = $tick_stack::influxdb::params::meta_dir,
-
-  $http_enable  = $tick_stack::influxdb::params::http_enable,
-  $http_bind    = $tick_stack::influxdb::params::http_bind,
-  $http_auth    = $tick_stack::influxdb::params::http_auth,
 
   $ensure       = $tick_stack::influxdb::params::ensure,
 
@@ -25,16 +16,7 @@ class tick_stack::influxdb (
     ensure  => $ensure,
   }
   -> class {'tick_stack::influxdb::config':
-    path         => $path,
-    bind_address => $bind_address,
-
-    data_dir     => $data_dir,
-    wal_dir      => $wal_dir,
-    meta_dir     => $meta_dir,
-
-    http_enable  => $http_enable,
-    http_bind    => $http_bind,
-    http_auth    => $http_auth,
+    path => $path,
   }
   ~> class {'tick_stack::influxdb::service':
     service    => $service,
