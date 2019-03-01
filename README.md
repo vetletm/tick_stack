@@ -22,8 +22,8 @@ Install Telegraf to use an external InfluxDB host:
 node default {
   class { 'tick_stack::telegraf':
     outputs => {
-      'outputs.influxdb' => {
-        'urls'      => [ 'http://127.0.0.1:8086' ],
+      'influxdb' => {
+        'url'      => 'http://127.0.0.1:8086',
         'database'  => '"telegraf"',
         'precision' => '"s"',
       }
@@ -36,11 +36,11 @@ Use some inputs in Telegraf:
 node default {
   class { 'tick_stack::telegraf':
     inputs => {
-      'inputs.cpu' => {
+      'cpu' => {
         'percpu'    => true,
         'totalcpu'  => true,
       },
-      'inputs.system' => {}
+      'system' => {}
     }
 }
 ```

@@ -19,7 +19,7 @@
 <% if @outputs -%>
 # OUTPUTS
 <% @outputs.each do |key,hash| -%>
-[[<%= key %>]]
+[[outputs.<%= key %>]]
 <% hash.each do |key,value| -%>
 <%= key %> = <%= value %>
 <%   end -%>
@@ -29,7 +29,7 @@
 <% if @inputs -%>
 # INPUTS
 <% @inputs.each do |key,hash| -%>
-[[<%= key %>]]
+[[inputs.<%= key %>]]
 <% hash.each do |key,value| -%>
 <%= key %> = <%= value %>
 <%   end -%>
