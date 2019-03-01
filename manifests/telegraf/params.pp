@@ -2,7 +2,13 @@
 #
 class tick_stack::telegraf::params {
   $ensure       = 'present'
-  $service      = 'running'
+  
+  # Service options
+  $service            = 'running'
+  $enable             = true
+  $hasrestart         = true
+  $hasstatus          = true
+
   $conf_path    = '/etc/telegraf/telegraf.conf'
 
   $global_tags = {

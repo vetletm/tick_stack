@@ -11,7 +11,11 @@ class tick_stack::influxdb::params {
   $http_bind      = '":8086"'
   $http_auth      = false
 
-
   $ensure         = 'present'
-  $service        = 'running'
+
+  # Service options
+  $service            = 'running'
+  $enable             = true
+  $hasrestart         = true
+  $hasstatus          = true
 }
