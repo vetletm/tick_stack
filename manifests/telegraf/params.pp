@@ -10,6 +10,7 @@ class tick_stack::telegraf::params {
   $hasstatus  = true
 
   $conf_path  = '/etc/telegraf/telegraf.conf'
+  $template   = 'tick_stack/telegraf.conf.erb'
 
   $global_tags = {
     'dc' => 'home',
