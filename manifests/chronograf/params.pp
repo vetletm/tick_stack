@@ -10,6 +10,7 @@ class tick_stack::chronograf::params {
   $hasstatus          = true
 
   $conf_path          = '/etc/default/chronograf'
+  $template           = 'tick_stack/chronograf.erb'
   # General options #
   $host               = '0.0.0.0'
   $port               = 8888

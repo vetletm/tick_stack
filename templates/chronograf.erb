@@ -1,12 +1,24 @@
-HOST=<%= @host %>
-PORT=<%= @port %>
-INFLUXDB_URL=<%= @influxdb_url %>
-<% if @influxdb_username %>INFLUXDB_USERNAME=<%= @influxdb_username %> <% end %>
-<% if @influxdb_password %>INFLUXDB_PASSWORD=<%= @influxdb_password %> <% end %>
-<% if @kapacitor_url %>KAPACITOR_URL=<%= @kapacitor_url %> <% end %>
-<% if @kapacitor_username %>KAPACITOR_USERNAME=<%= @kapacitor_username %> <% end %>
-<% if @kapacitor_password %>KAPACITOR_PASSWORD=<%= @kapacitor_password %> <% end %>
-<% if @cert %>
-TLS_CERTIFICATE=<%= @cert %>
-TLS_PRIVATE_KEY=<%= @key %>
+HOST=<%= scope['tick_stack::chronograf::host'] %>
+PORT=<%= scope['tick_stack::chronograf::port'] %>
+<% if scope['tick_stack::chronograf::influxdb_url'] %>
+INFLUXDB_URL=<%= scope['tick_stack::chronograf::influxdb_url'] %>
+<% end %>
+<% if scope['tick_stack::chronograf::influxdb_username'] %>
+INFLUXDB_USERNAME=<%= scope['tick_stack::chronograf::influxdb_username'] %>
+<% end %>
+<% if scope['tick_stack::chronograf::influxdb_password'] %>
+INFLUXDB_PASSWORD=<%= scope['tick_stack::chronograf::influxdb_password'] %>
+<% end %>
+<% if scope['tick_stack::chronograf::kapacitor_url'] %>
+KAPACITOR_URL=<%= scope['tick_stack::chronograf::kapacitor_url'] %>
+<% end %>
+<% if scope['tick_stack::chronograf::kapacitor_username'] %>
+KAPACITOR_USERNAME=<%= scope['tick_stack::chronograf::kapacitor_username'] %>
+ <% end %>
+<% if scope['tick_stack::chronograf::kapacitor_password'] %>
+KAPACITOR_PASSWORD=<%= scope['tick_stack::chronograf::kapacitor_password'] %>
+<% end %>
+<% if scope['tick_stack::chronograf::cert'] %>
+TLS_CERTIFICATE=<%= scope['tick_stack::chronograf::cert'] %>
+TLS_PRIVATE_KEY=<%= scope['tick_stack::chronograf::key'] %>
 <% end %>

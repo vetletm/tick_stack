@@ -9,6 +9,7 @@ class tick_stack::chronograf (
   $hasstatus          = $tick_stack::chronograf::params::hasstatus,
 
   $conf_path          = $tick_stack::chronograf::params::conf_path,
+  $template           = $tick_stack::chronograf::params::template,
   $host               = $tick_stack::chronograf::params::host,
   $port               = $tick_stack::chronograf::params::port,
   $influxdb_url       = $tick_stack::chronograf::params::influxdb_url,
@@ -27,18 +28,8 @@ class tick_stack::chronograf (
     ensure  => $ensure,
   }
   -> class {'tick_stack::chronograf::config':
-    conf_path          => $conf_path,
-    host               => $host,
-    port               => $port,
-    influxdb_url       => $influxdb_url,
-    influxdb_username  => $influxdb_username,
-    influxdb_password  => $influxdb_password,
-    kapacitor_url      => $kapacitor_url,
-    kapacitor_username => $kapacitor_username,
-    kapacitor_password => $kapacitor_password,
-    cert               => $cert,
-    key                => $key,
-
+    conf_path => $conf_path,
+    template  => $template,
   }
   ~> class {'tick_stack::chronograf::service':
     service    => $service,
