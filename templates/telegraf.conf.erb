@@ -2,23 +2,23 @@
 #
 # THIS FILE IS MANAGED BY PUPPET
 #
-<% if @global_tags -%>
+<% if scope['tick_stack::telegraf::global_tags'] -%>
 [global_tags]
-<%   @global_tags.each do |key, value| -%>
+<%   scope['tick_stack::telegraf::global_tags'].each do |key, value| -%>
   <%= key %> = "<%= value %>"
 <%   end -%>
 <% end -%>
 
-<% if @agent -%>
+<% if scope['tick_stack::telegraf::agent'] -%>
 [agent]
-<%   @agent.each do |key, value| -%>
+<%   scope['tick_stack::telegraf::agent'].each do |key, value| -%>
   <%= key %> = "<%= value %>"
 <%   end -%>
 <% end -%>
 
-<% if @outputs -%>
+<% if scope['tick_stack::telegraf::outputs'] -%>
 # OUTPUTS
-<% @outputs.each do |key,hash| -%>
+<% scope['tick_stack::telegraf::outputs'].each do |key,hash| -%>
 [[outputs.<%= key %>]]
 <% hash.each do |key,value| -%>
 <%= key %> = <%= value %>
@@ -26,9 +26,9 @@
 <%  end -%>
 <% end -%>
 
-<% if @inputs -%>
+<% if scope['tick_stack::telegraf::inputs'] -%>
 # INPUTS
-<% @inputs.each do |key,hash| -%>
+<% scope['tick_stack::telegraf::inputs'].each do |key,hash| -%>
 [[inputs.<%= key %>]]
 <% hash.each do |key,value| -%>
 <%= key %> = <%= value %>

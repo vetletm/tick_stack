@@ -8,6 +8,7 @@ class tick_stack::telegraf (
   $outputs     = $tick_stack::telegraf::params::outputs,
   $inputs      = $tick_stack::telegraf::params::inputs,
   $conf_path   = $tick_stack::telegraf::params::conf_path,
+  $template    = $tick_stack::telegraf::params::template,
 
   $service     = $tick_stack::telegraf::params::service,
   $enable      = $tick_stack::telegraf::params::enable,
@@ -24,11 +25,8 @@ class tick_stack::telegraf (
     ensure  => $ensure,
   }
   -> class {'tick_stack::telegraf::config':
-    conf_path   => $conf_path,
-    global_tags => $global_tags,
-    agent       => $agent,
-    outputs     => $outputs,
-    inputs      => $inputs,
+    conf_path => $conf_path,
+    template  => $template,
   }
   ~> class {'tick_stack::telegraf::service':
     service    => $service,
