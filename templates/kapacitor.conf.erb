@@ -3,12 +3,12 @@
 # THIS FILE IS MANAGED BY PUPPET
 #
 
-hostname = "<%= @hostname %>"
-data_dir = "<%= @data_dir %>"
+hostname = "<%= scope['tick_stack::kapacitor::hostname'] %>"
+data_dir = "<%= scope['tick_stack::kapacitor::data_dir'] %>"
 
 [http]
-<% if @http -%>
-<%   @http.each do |key, value| -%>
+<% if scope['tick_stack::kapacitor::http'] -%>
+<%   scope['tick_stack::kapacitor::http'].each do |key, value| -%>
   <%= key %> = <%= value %>
 <%   end -%>
 <% end -%>

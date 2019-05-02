@@ -1,10 +1,11 @@
 # == Class: tick_stack::kapacitor::config
 #
 class tick_stack::kapacitor::config(
-  $path = tick_stack::kapacitor::params::path
+  $conf_path = $tick_stack::kapacitor::params::conf_path,
+  $template  = $tick_stack::kapacitor::params::template,
   ) inherits tick_stack::kapacitor::params {
-  file { $path:
+  file { $conf_path:
     ensure  => file,
-    content => template('tick_stack/kapacitor.conf.erb')
+    content => template($template)
   }
 }

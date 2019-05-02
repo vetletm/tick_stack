@@ -5,7 +5,9 @@ class tick_stack::kapacitor::params {
   $ensure     = 'present'
 
   # Config options
-  $path = '/etc/kapacitor/kapacitor.conf'
+  $conf_path  = '/etc/kapacitor/kapacitor.conf'
+  $template   = 'tick_stack/kapacitor.conf.erb'
+
   $hostname = $facts['hostname']
   $data_dir = '/var/lib/kapacitor'
   $http = {

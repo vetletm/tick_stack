@@ -1,7 +1,12 @@
 # == Class: tick_stack::telegraf::params
 #
 class tick_stack::telegraf::params {
+  # Install options
   $ensure     = 'present'
+
+  # Config options
+  $conf_path  = '/etc/telegraf/telegraf.conf'
+  $template   = 'tick_stack/telegraf.conf.erb'
 
   # Service options
   $service    = 'running'
@@ -9,8 +14,7 @@ class tick_stack::telegraf::params {
   $hasrestart = true
   $hasstatus  = true
 
-  $conf_path  = '/etc/telegraf/telegraf.conf'
-
+  # Specific hashes for configuration of the agent
   $global_tags = {
     'dc' => 'home',
   }

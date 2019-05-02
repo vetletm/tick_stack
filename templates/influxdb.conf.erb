@@ -3,71 +3,79 @@
 # THIS FILE IS MANAGED BY PUPPET
 #
 # Global settings
-<% if @global -%>
 [global]
-<%   @global.each do |key, value| -%>
-  <%= key %> = <%= value %>
-<%   end -%>
-<% end -%>
-<% if @meta -%>
+bind-address = "<%= scope['tick_stack::influxdb::bind_addr'] %>"
+
 # Metastore settings
 [meta]
-<%   @meta.each do |key, value| -%>
-  <%= key %> = <%= value %>
-<%   end -%>
-<% end -%>
-<% if @data -%>
+dir = "<%= scope['tick_stack::influxdb::meta_dir'] %>"
+
 # Data settings
 [data]
-<%   @data.each do |key, value| -%>
-  <%= key %> = <%= value %>
-<%   end -%>
-<% end -%>
-<% if @coordinator -%>
-[coordinator]
-<%   @coordinator.each do |key, value| -%>
-  <%= key %> = <%= value %>
-<%   end -%>
-<% end -%>
-<% if @retention -%>
-[retention]
-<%   @retention.each do |key, value| -%>
-  <%= key %> = <%= value %>
-<%   end -%>
-<% end -%>
-<% if @shardprecreation -%>
-[shard-precreation]
-<%   @shardprecreation.each do |key, value| -%>
-  <%= key %> = <%= value %>
-<%   end -%>
-<% end -%>
-<% if @monitor -%>
-[monitor]
-<%   @monitor.each do |key, value| -%>
-  <%= key %> = <%= value %>
-<%   end -%>
-<% end -%>
-<% if @http -%>
+dir = "<%= scope['tick_stack::influxdb::data_dir'] %>"
+wal-dir = "<%= scope['tick_stack::influxdb::wal_dir'] %>"
+trace_logging_enabled = <%= scope['tick_stack::influxdb::trace_logging_enabled'] %>
+query_log_enabled = <%= scope['tick_stack::influxdb::query_log_enabled'] %>
+cache_max_memory_size = <%= scope['tick_stack::influxdb::cache_max_memory_size'] %>
+cache_snapshot_memory_size = <%= scope['tick_stack::influxdb::cache_snapshot_memory_size'] %>
+cache_snapshot_write_cold_duration = "<%= scope['tick_stack::influxdb::cache_snapshot_write_cold_duration'] %>"
+compact_full_write_cold_duration = "<%= scope['tick_stack::influxdb::compact_full_write_cold_duration'] %>"
+max_series_per_database = <%= scope['tick_stack::influxdb::max_series_per_database'] %>
+max_values_per_tag = <%= scope['tick_stack::influxdb::max_values_per_tag'] %>
+
+<%# The rest are optional hashes that can be defined if needed, they are undef in params %>
+<% if scope['tick_stack::influxdb::http'] -%>
 [http]
-<%   @http.each do |key, value| -%>
+<%   scope['tick_stack::influxdb::http'].each do |key, value| -%>
   <%= key %> = <%= value %>
 <%   end -%>
 <% end -%>
-<% if @logging -%>
+
+<% if scope['tick_stack::influxdb::coordinator'] -%>
+[coordinator]
+<%   scope['tick_stack::influxdb::coordinator'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+
+<% if scope['tick_stack::influxdb::retention'] -%>
+[retention]
+<%   scope['tick_stack::influxdb::retention'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+
+<% if scope['tick_stack::influxdb::shardprecreation'] -%>
+[shard-precreation]
+<%   scope['tick_stack::influxdb::shardprecreation'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+
+<% if scope['tick_stack::influxdb::monitor'] -%>
+[monitor]
+<%   scope['tick_stack::influxdb::monitor'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+
+<% if scope['tick_stack::influxdb::logging'] -%>
 [logging]
-<%   @logging.each do |key, value| -%>
+<%   scope['tick_stack::influxdb::logging'].each do |key, value| -%>
   <%= key %> = <%= value %>
 <%   end -%>
 <% end -%>
-<% if @subscriber -%>
+
+<% if scope['tick_stack::influxdb::subscriber'] -%>
 [subscriber]
-<%   @subscriber.each do |key, value| -%>
+<%   scope['tick_stack::influxdb::subscriber'].each do |key, value| -%>
   <%= key %> = <%= value %>
 <%   end -%>
 <% end -%>
-<% if @tls -%>
+
+<% if scope['tick_stack::influxdb::tls'] -%>
 [tls]
-<%   @tls.each do |key, value| -%>
+<%   scope['tick_stack::influxdb::tls'].each do |key, value| -%>
   <%= key %> = <%= value %>
 <%   end -%>
 <% end -%>
