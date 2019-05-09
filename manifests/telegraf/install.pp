@@ -1,8 +1,9 @@
 # == Class: tick_stack::telegraf::install
 #
-class tick_stack::telegraf::install (
-  $ensure    = $tick_stack::telegraf::params::ensure,
-  ) inherits tick_stack::telegraf::params {
+class tick_stack::telegraf::install {
+  assert_private()
+
+  $ensure = $tick_stack::telegraf::ensure
 
   package { 'telegraf':
     ensure => $ensure,
