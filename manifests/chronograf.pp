@@ -22,19 +22,25 @@ class tick_stack::chronograf (
   $key                = $tick_stack::chronograf::params::key,
 
   ) inherits tick_stack::chronograf::params {
+
   include tick_stack::repo
-  class {'tick_stack::chronograf::install':
-    require => Class['tick_stack::repo'],
-    ensure  => $ensure,
-  }
-  -> class {'tick_stack::chronograf::config':
-    conf_path => $conf_path,
-    template  => $template,
-  }
-  ~> class {'tick_stack::chronograf::service':
-    service    => $service,
-    enable     => $enable,
-    hasrestart => $hasrestart,
-    hasstatus  => $hasstatus,
-  }
+
+  Class['tick_stack::chronograf::install']
+  -> Class['tick_stack::chronograf::config']
+  ~> Class['tick_stack::chronograf::service']
+
+  # class {'tick_stack::chronograf::install':
+  #   require => Class['tick_stack::repo'],
+  #   ensure  => $ensure,
+  # }
+  # -> class {'tick_stack::chronograf::config':
+  #   conf_path => $conf_path,
+  #   template  => $template,
+  # }
+  # ~> class {'tick_stack::chronograf::service':
+  #   service    => $service,
+  #   enable     => $enable,
+  #   hasrestart => $hasrestart,
+  #   hasstatus  => $hasstatus,
+  # }
 }

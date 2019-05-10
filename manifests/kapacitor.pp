@@ -15,18 +15,26 @@ class tick_stack::kapacitor (
 
   include tick_stack::repo
 
-  class {'tick_stack::kapacitor::install':
-    require => Class['tick_stack::repo'],
-    ensure  => $ensure,
-  }
-  -> class {'tick_stack::kapacitor::config':
-    conf_path => $conf_path,
-    template  => $template,
-  }
-  ~> class {'tick_stack::kapacitor::service':
-    service    => $service,
-    enable     => $enable,
-    hasrestart => $hasrestart,
-    hasstatus  => $hasstatus,
-  }
+  contain tick_stack::kapacitor::install
+  contain tick_stack::kapacitor::config
+  contain tick_stack::kapacitor::service
+
+  Class['tick_stack::kapacitor::install']
+  -> Class['tick_stack::kapacitor::config']
+  ~> Class['tick_stack::kapacitor::service']
+
+  # class {'tick_stack::kapacitor::install':
+  #   require => Class['tick_stack::repo'],
+  #   ensure  => $ensure,
+  # }
+  # -> class {'tick_stack::kapacitor::config':
+  #   conf_path => $conf_path,
+  #   template  => $template,
+  # }
+  # ~> class {'tick_stack::kapacitor::service':
+  #   service    => $service,
+  #   enable     => $enable,
+  #   hasrestart => $hasrestart,
+  #   hasstatus  => $hasstatus,
+  # }
 }

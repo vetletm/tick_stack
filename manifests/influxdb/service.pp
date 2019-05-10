@@ -1,11 +1,13 @@
 # == Class: tick_stack::influxdb::service
 #
-class tick_stack::influxdb::service (
-  $service    = $tick_stack::influxdb::params::service,
-  $enable     = $tick_stack::influxdb::params::enable,
-  $hasrestart = $tick_stack::influxdb::params::hasrestart,
-  $hasstatus  = $tick_stack::influxdb::params::hasstatus,
-  ) inherits tick_stack::influxdb::params {
+class tick_stack::influxdb::service {
+  assert_private()
+  
+  $service    = $tick_stack::influxdb::service
+  $enable     = $tick_stack::influxdb::enable
+  $hasrestart = $tick_stack::influxdb::hasrestart
+  $hasstatus  = $tick_stack::influxdb::hasstatus
+
   service { 'influxdb':
     ensure     => $service,
     enable     => $enable,

@@ -1,11 +1,13 @@
 # == Class: tick_stack::kapacitor::service
 #
-class tick_stack::kapacitor::service (
-  $service    = $tick_stack::kapacitor::params::service,
-  $enable     = $tick_stack::kapacitor::params::enable,
-  $hasrestart = $tick_stack::kapacitor::params::hasrestart,
-  $hasstatus  = $tick_stack::kapacitor::params::hasstatus,
-  ) inherits tick_stack::kapacitor::params {
+class tick_stack::kapacitor::service {
+  assert_private()
+
+  $service    = $tick_stack::kapacitor::service
+  $enable     = $tick_stack::kapacitor::enable
+  $hasrestart = $tick_stack::kapacitor::hasrestart
+  $hasstatus  = $tick_stack::kapacitor::hasstatus
+
   service { 'kapacitor':
     ensure     => $service,
     enable     => $enable,
