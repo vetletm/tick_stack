@@ -43,6 +43,10 @@ class tick_stack::influxdb (
 
   include tick_stack::repo
 
+  contain tick_stack::influxdb::install
+  contain tick_stack::influxdb::config
+  contain tick_stack::influxdb::service
+
   Class['tick_stack::influxdb::install']
   -> Class['tick_stack::influxdb::config']
   ~> Class['tick_stack::influxdb::service']

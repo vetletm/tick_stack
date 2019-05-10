@@ -25,6 +25,10 @@ class tick_stack::chronograf (
 
   include tick_stack::repo
 
+  contain tick_stack::chronograf::install
+  contain tick_stack::chronograf::config
+  contain tick_stack::chronograf::service
+
   Class['tick_stack::chronograf::install']
   -> Class['tick_stack::chronograf::config']
   ~> Class['tick_stack::chronograf::service']
