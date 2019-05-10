@@ -40,19 +40,15 @@ class tick_stack::influxdb (
   Hash $subscriber                    = $tick_stack::influxdb::params::subscriber,
   Hash $tls                           = $tick_stack::influxdb::params::tls,
   ) inherits tick_stack::influxdb::params  {
+
   include tick_stack::repo
-  class {'tick_stack::influxdb::install':
-    require => Class['tick_stack::repo'],
-    ensure  => $ensure,
-  }
-  -> class {'tick_stack::influxdb::config':
-    conf_path => $conf_path,
-    template  => $template,
-  }
-  ~> class {'tick_stack::influxdb::service':
-    service    => $service,
-    enable     => $enable,
-    hasrestart => $hasrestart,
-    hasstatus  => $hasstatus,
-  }
+
+  contain tick_stack::influxdb::install
+  contain tick_stack::influxdb::config
+  contain tick_stack::influxdb::service
+
+  Class['tick_stack::influxdb::install']
+  -> Class['tick_stack::influxdb::config']
+  ~> Class['tick_stack::influxdb::service']
+
 }

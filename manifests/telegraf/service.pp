@@ -1,11 +1,13 @@
 # == Class: tick_stack::telegraf::service
 #
-class tick_stack::telegraf::service (
-  $service    = $tick_stack::telegraf::params::service,
-  $enable     = $tick_stack::telegraf::params::enable,
-  $hasrestart = $tick_stack::telegraf::params::hasrestart,
-  $hasstatus  = $tick_stack::telegraf::params::hasstatus,
-  ) inherits tick_stack::telegraf::params {
+class tick_stack::telegraf::service {
+  assert_private()
+  
+  $service    = $tick_stack::telegraf::service
+  $enable     = $tick_stack::telegraf::enable
+  $hasrestart = $tick_stack::telegraf::hasrestart
+  $hasstatus  = $tick_stack::telegraf::hasstatus
+
   service { 'telegraf':
     ensure     => $service,
     enable     => $enable,
