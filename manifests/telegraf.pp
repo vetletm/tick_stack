@@ -20,7 +20,6 @@ class tick_stack::telegraf (
   Hash $outputs     = $tick_stack::telegraf::params::outputs,
   Hash $inputs      = $tick_stack::telegraf::params::inputs,
 
-
   ) inherits tick_stack::telegraf::params {
 
   include tick_stack::repo
