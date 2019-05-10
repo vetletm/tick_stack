@@ -22,24 +22,10 @@ class tick_stack::telegraf (
 
   contain tick_stack::telegraf::install
   contain tick_stack::telegraf::config
-  contain tick_stack::tick_stack::telegraf::service
+  contain tick_stack::telegraf::service
 
   Class['tick_stack::telegraf::install']
   -> Class['tick_stack::telegraf::config']
   ~> Class['tick_stack::telegraf::service']
 
-  # class {'tick_stack::telegraf::install':
-  #   require => Class['tick_stack::repo'],
-  #   ensure  => $ensure,
-  # }
-  # -> class {'tick_stack::telegraf::config':
-  #   conf_path => $conf_path,
-  #   template  => $template,
-  # }
-  # ~> class {'tick_stack::telegraf::service':
-  #   service    => $service,
-  #   enable     => $enable,
-  #   hasrestart => $hasrestart,
-  #   hasstatus  => $hasstatus,
-  # }
 }
