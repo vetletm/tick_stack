@@ -51,18 +51,4 @@ class tick_stack::influxdb (
   -> Class['tick_stack::influxdb::config']
   ~> Class['tick_stack::influxdb::service']
 
-  # class {'tick_stack::influxdb::install':
-  #   require => Class['tick_stack::repo'],
-  #   ensure  => $ensure,
-  # }
-  # -> class {'tick_stack::influxdb::config':
-  #   conf_path => $conf_path,
-  #   template  => $template,
-  # }
-  # ~> class {'tick_stack::influxdb::service':
-  #   service    => $service,
-  #   enable     => $enable,
-  #   hasrestart => $hasrestart,
-  #   hasstatus  => $hasstatus,
-  # }
 }

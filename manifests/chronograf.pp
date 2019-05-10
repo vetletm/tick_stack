@@ -1,15 +1,20 @@
 # == Class: tick_stack::chronograf
 #
 class tick_stack::chronograf (
+  # For Install-class
   $ensure             = $tick_stack::chronograf::params::ensure,
 
+  # For Config-class
+  $conf_path          = $tick_stack::chronograf::params::conf_path,
+  $template           = $tick_stack::chronograf::params::template,
+
+  # For Service-class
   $service            = $tick_stack::chronograf::params::service,
   $enable             = $tick_stack::chronograf::params::enable,
   $hasrestart         = $tick_stack::chronograf::params::hasrestart,
   $hasstatus          = $tick_stack::chronograf::params::hasstatus,
 
-  $conf_path          = $tick_stack::chronograf::params::conf_path,
-  $template           = $tick_stack::chronograf::params::template,
+  # Specific configuration settings:
   $host               = $tick_stack::chronograf::params::host,
   $port               = $tick_stack::chronograf::params::port,
   $influxdb_url       = $tick_stack::chronograf::params::influxdb_url,
@@ -33,18 +38,4 @@ class tick_stack::chronograf (
   -> Class['tick_stack::chronograf::config']
   ~> Class['tick_stack::chronograf::service']
 
-  # class {'tick_stack::chronograf::install':
-  #   require => Class['tick_stack::repo'],
-  #   ensure  => $ensure,
-  # }
-  # -> class {'tick_stack::chronograf::config':
-  #   conf_path => $conf_path,
-  #   template  => $template,
-  # }
-  # ~> class {'tick_stack::chronograf::service':
-  #   service    => $service,
-  #   enable     => $enable,
-  #   hasrestart => $hasrestart,
-  #   hasstatus  => $hasstatus,
-  # }
 }
