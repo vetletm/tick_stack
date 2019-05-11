@@ -15,8 +15,14 @@ class tick_stack::kapacitor (
   $hasstatus  = $tick_stack::kapacitor::params::hasstatus,
 
   # Specific configuration settings:
-  Hash $http       = $tick_stack::kapacitor::params::http,
   String $data_dir = $tick_stack::kapacitor::params::data_dir,
+  Hash $http       = $tick_stack::kapacitor::params::http,
+  Hash $influxdb   = $tick_stack::kapacitor::params::influxdb,
+  Hash $replay     = $tick_stack::kapacitor::params::replay,
+  Hash $storage    = $tick_stack::kapacitor::params::storage,
+  Hash $task       = $tick_stack::kapacitor::params::task,
+  Hash $load       = $tick_stack::kapacitor::params::load,
+  Hash $logging    = $tick_stack::kapacitor::params::logging,
 
   ) inherits tick_stack::kapacitor::params {
 

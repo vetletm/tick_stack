@@ -6,52 +6,51 @@
 hostname = "<%= scope['tick_stack::kapacitor::hostname'] %>"
 data_dir = "<%= scope['tick_stack::kapacitor::data_dir'] %>"
 
-[http]
 <% if scope['tick_stack::kapacitor::http'] -%>
+[http]
 <%   scope['tick_stack::kapacitor::http'].each do |key, value| -%>
   <%= key %> = <%= value %>
 <%   end -%>
 <% end -%>
 
+<% if scope['tick_stack::kapacitor::replay'] -%>
 [replay]
-  dir = "/var/lib/kapacitor/replay"
+<%   scope['tick_stack::kapacitor::replay'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
 
+<% if scope['tick_stack::kapacitor::storage'] -%>
 [storage]
-  boltdb = "/var/lib/kapacitor/kapacitor.db"
+<%   scope['tick_stack::kapacitor::storage'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
 
+<% if scope['tick_stack::kapacitor::task'] -%>
 [task]
-  dir = "/var/lib/kapacitor/tasks"
-  snapshot-interval = "1m0s"
+<%   scope['tick_stack::kapacitor::task'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
 
+<% if scope['tick_stack::kapacitor::load'] -%>
 [load]
-  enabled = false
-  dir = "/var/lib/kapacitor/load"
+<%   scope['tick_stack::kapacitor::load'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
 
-[[influxdb]]
-  enabled = true
-  name = "default"
-  default = false
-  urls = ["http://localhost:8086"]
-  username = ""
-  password = ""
-  ssl-ca = ""
-  ssl-cert = ""
-  ssl-key = ""
-  insecure-skip-verify = false
-  timeout = "0s"
-  disable-subscriptions = false
-  subscription-protocol = "http"
-  subscription-mode = "cluster"
-  kapacitor-hostname = ""
-  http-port = 0
-  udp-bind = ""
-  udp-buffer = 1000
-  udp-read-buffer = 0
-  startup-timeout = "5m0s"
-  subscriptions-sync-interval = "1m0s"
-  [influxdb.excluded-subscriptions]
-    _kapacitor = ["autogen"]
-
+<% if scope['tick_stack::kapacitor::logging'] -%>
 [logging]
-  file = "STDERR"
-  level = "DEBUG"
+<%   scope['tick_stack::kapacitor::logging'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
+
+<% if scope['tick_stack::kapacitor::influxdb'] -%>
+[[influxdb]]
+<%   scope['tick_stack::kapacitor::influxdb'].each do |key, value| -%>
+  <%= key %> = <%= value %>
+<%   end -%>
+<% end -%>
